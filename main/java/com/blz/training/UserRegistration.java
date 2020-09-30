@@ -43,6 +43,17 @@ public class UserRegistration {
 		} else {
 			System.out.println("Email does not match the requirements");
 		}
+
+		System.out.println("Enter your mobile number");
+		String mobile = sc.nextLine();
+		boolean m = mobile.matches("^[0-9]{2}[' '][6-9][0-9]{9}$");
+
+		// Validating Mobile Number
+		if (m == true) {
+			System.out.println("Your Mobile number is : " + mobile);
+		} else {
+			System.out.println("Mobile number does not match the requirements");
+		}
 	}
 
 }
