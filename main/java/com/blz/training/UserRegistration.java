@@ -32,6 +32,17 @@ public class UserRegistration {
 		} else {
 			System.out.println("Last Name does not match the requirements");
 		}
+
+		System.out.println("Enter your email");
+		String email = sc.next();
+		boolean e = email.matches("^[a-z]{3,}(.([a-z]{3,}))?@[a-z]{2,}.[a-z]{2,}.in$");
+
+		// Validating Email
+		if (e == true) {
+			System.out.println("Your Email is : " + email);
+		} else {
+			System.out.println("Email does not match the requirements");
+		}
 	}
 
 }
