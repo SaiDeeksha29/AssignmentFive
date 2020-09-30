@@ -54,6 +54,17 @@ public class UserRegistration {
 		} else {
 			System.out.println("Mobile number does not match the requirements");
 		}
+
+		System.out.println("Enter your password");
+		String password = sc.next();
+		Boolean p = password.matches("[a-z]{8,}");
+
+		// Validating password using Rule 1
+		if (p == true) {
+			System.out.println("Your Password is : " + password);
+		} else {
+			System.out.println("Password does not match the requirements");
+		}
 	}
 
 }
