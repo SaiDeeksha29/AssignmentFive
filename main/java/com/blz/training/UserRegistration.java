@@ -87,6 +87,17 @@ public class UserRegistration {
 		} else {
 			System.out.println("Password does not match the requirements");
 		}
+
+		System.out.println("Enter your password");
+		String password3 = sc.next();
+		boolean p3 = password3.matches("([<>!@#$%^&*'\"/;`%])(?=.*[A-Z])(?=.*\\d)[a-zA-Z0-9_]{8,}");
+
+		// Validating password using Rule 4
+		if (p3 == true) {
+			System.out.println("Your Password is : " + password3);
+		} else {
+			System.out.println("Password does not match the requirements");
+		}
 	}
 
 }
