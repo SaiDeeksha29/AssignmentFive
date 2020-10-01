@@ -98,6 +98,18 @@ public class UserRegistration {
 		} else {
 			System.out.println("Password does not match the requirements");
 		}
+
+		System.out.println("Enter your email sample");
+		String emailSample = sc.next();
+		boolean e2 = emailSample.matches(
+				"^(abc)+(((\\.[0-9])|(\\+[0-9])|(\\-[0-9])|[0-9]){0,})@[a-z0-9]{1,}(.)(([a-z0-9]{2,}(.))|([a-z0-9]{2,}(,)))[a-z0-9]{0,}");
+
+		// Validating email samples
+		if (e2 == true) {
+			System.out.println("Your email sample is : " + emailSample);
+		} else {
+			System.out.println("email sample does not match the requirements");
+		}
 	}
 
 }
