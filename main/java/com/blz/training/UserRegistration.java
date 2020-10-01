@@ -56,41 +56,8 @@ public class UserRegistration {
 		}
 
 		System.out.println("Enter your password");
-		String password = sc.next();
-		Boolean p = password.matches("[a-z]{8,}");
-
-		// Validating password using Rule 1
-		if (p == true) {
-			System.out.println("Your Password is : " + password);
-		} else {
-			System.out.println("Password does not match the requirements");
-		}
-
-		System.out.println("Enter your password");
-		String password1 = sc.next();
-		boolean p1 = password1.matches("(?=.*[A-Z])([a-zA-Z]|[^a-zA-Z0-9_])(^<>'\"/;`%]){8,}$");
-
-		// Validating password using Rule 2
-		if (p1 == true) {
-			System.out.println("Your Password is : " + password1);
-		} else {
-			System.out.println("Password does not match the requirements");
-		}
-
-		System.out.println("Enter your password");
-		String password2 = sc.next();
-		boolean p2 = password2.matches("(?=.*[A-Z])(?=.*\\d)([a-zA-Z0-9_]|[^a-zA-Z0-9_])(^<>'\"/;`%]){8,}$");
-
-		// Validating password using Rule 3
-		if (p2 == true) {
-			System.out.println("Your Password is : " + password2);
-		} else {
-			System.out.println("Password does not match the requirements");
-		}
-
-		System.out.println("Enter your password");
 		String password3 = sc.next();
-		boolean p3 = password3.matches("([<>!@#$%^&*'\"/;`%])(?=.*[A-Z])(?=.*\\d)[a-zA-Z0-9_]{8,}");
+		boolean p3 = password3.matches("((?=.[<>!@#$%^&*'\"/;`%])(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,})");
 
 		// Validating password using Rule 4
 		if (p3 == true) {
