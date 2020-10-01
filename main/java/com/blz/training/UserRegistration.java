@@ -2,81 +2,143 @@ package com.blz.training;
 
 import java.util.Scanner;
 
-import java.util.regex.*;
-
 public class UserRegistration {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidUserDetailsException {
 		// TODO Auto-generated method stub
 
 		Scanner sc = new Scanner(System.in);
 
+		UserRegistration ur = new UserRegistration();
+
 		System.out.println("Enter your First Name");
-		String firstName = sc.next();
-		boolean fName = firstName.matches("^[A-Z][a-zA-Z]{2,}$");
+		String fName = sc.next();
+		boolean firstName = ur.checkFirstName(fName);
 
 		// Validating First Name
-		if (fName == true) {
-			System.out.println("Your First Name is : " + firstName);
-		} else {
-			System.out.println("First Name does not match the requirements");
+
+		try {
+			if (firstName == true) {
+				System.out.println("Your First Name is : " + fName);
+			} else {
+				throw new InvalidUserDetailsException("Invalid First Name");
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception : " + e1);
 		}
 
 		System.out.println("Enter your Last Name");
-		String lastName = sc.next();
-		boolean lName = lastName.matches("^[A-Z][a-zA-Z]{2,}$");
+		String lName = sc.next();
+		boolean lastName = ur.checkLastName(lName);
 
 		// Validating Last Name
-		if (lName == true) {
-			System.out.println("Your Last Name is : " + lastName);
-		} else {
-			System.out.println("Last Name does not match the requirements");
+		try {
+			if (lastName == true) {
+				System.out.println("Your Last Name is : " + lName);
+			} else {
+				throw new InvalidUserDetailsException("Invalid Last Name");
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception : " + e1);
 		}
 
 		System.out.println("Enter your email");
-		String email = sc.next();
-		boolean e = email.matches("^[a-z]{3,}(.([a-z]{3,}))?@[a-z]{2,}.[a-z]{2,}.in$");
+		String e = sc.next();
+		boolean email = ur.checkEmail(e);
 
 		// Validating Email
-		if (e == true) {
-			System.out.println("Your Email is : " + email);
-		} else {
-			System.out.println("Email does not match the requirements");
+		try {
+			if (email == true) {
+				System.out.println("Your Email is : " + e);
+			} else {
+				throw new InvalidUserDetailsException("Invalid Email");
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception : " + e1);
 		}
 
 		System.out.println("Enter your mobile number");
-		String mobile = sc.nextLine();
-		boolean m = mobile.matches("^[0-9]{2}[' '][6-9][0-9]{9}$");
+		String m = sc.nextLine();
+		sc.nextLine();
+		boolean mobile = ur.checkMobile(m);
 
 		// Validating Mobile Number
-		if (m == true) {
-			System.out.println("Your Mobile number is : " + mobile);
-		} else {
-			System.out.println("Mobile number does not match the requirements");
+		try {
+			if (mobile == true) {
+				System.out.println("Your Mobile number is : " + m);
+			} else {
+				throw new InvalidUserDetailsException("Invalid Mobile Number");
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception : " + e1);
 		}
 
 		System.out.println("Enter your password");
-		String password3 = sc.next();
-		boolean p3 = password3.matches("((?=.[<>!@#$%^&*'\"/;`%])(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,})");
+		String passWord = sc.next();
+		boolean p = ur.checkPassword(passWord);
 
-		// Validating password using Rule 4
-		if (p3 == true) {
-			System.out.println("Your Password is : " + password3);
-		} else {
-			System.out.println("Password does not match the requirements");
+		// Validating password using Rules
+		try {
+			if (p == true) {
+				System.out.println("Your Password is : " + passWord);
+			} else {
+				throw new InvalidUserDetailsException("Invalid Password");
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception : " + e1);
 		}
 
 		System.out.println("Enter your email sample");
 		String emailSample = sc.next();
-		boolean e2 = emailSample.matches(
-				"^(abc)+(((\\.[0-9])|(\\+[0-9])|(\\-[0-9])|[0-9]){0,})@[a-z0-9]{1,}(.)(([a-z0-9]{2,}(.))|([a-z0-9]{2,}(,)))[a-z0-9]{0,}");
+		boolean e2 = UserRegistration.emailCheck(emailSample);
 
 		// Validating email samples
-		if (e2 == true) {
-			System.out.println("Your email sample is : " + emailSample);
-		} else {
-			System.out.println("email sample does not match the requirements");
+		try {
+			if (e2 == true) {
+				System.out.println("Your email sample is : " + emailSample);
+			} else {
+				throw new InvalidUserDetailsException("Invalid Email Sample");
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception : " + e1);
 		}
+	}
+
+	public boolean checkFirstName(String firstName) {
+		// TODO Auto-generated method stub
+		return firstName.matches("^[A-Z][a-zA-Z]{2,}$");
+	}
+
+	public boolean checkLastName(String lastName) {
+		// TODO Auto-generated method stub
+		return lastName.matches("^[A-Z][a-zA-Z]{2,}$");
+	}
+
+	public boolean checkEmail(String email) {
+		// TODO Auto-generated method stub
+		return email.matches("^[a-z]{3,}(.([a-z]{3,}))?@[a-z]{2,}.[a-z]{2,}.in$");
+	}
+
+	public boolean checkMobile(String mobile) {
+		// TODO Auto-generated method stub
+		return mobile.matches("^[0-9]{2}[' '][6-9][0-9]{9}$");
+	}
+
+	public boolean checkPassword(String password) {
+		// TODO Auto-generated method stub
+		return password.matches("((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[<>!@#$%^&*'\"/;`%]).{8,})");
+	}
+
+	public static boolean emailCheck(String input) {
+		// TODO Auto-generated method stub
+		return input.matches(
+				"^(abc)+(((\\.[0-9])|(\\+[0-9])|(\\-[0-9])|[0-9]){0,})@[a-z0-9]{1,}(.)(([a-z0-9]{2,}(.))|([a-z0-9]{2,}(,)))[a-z0-9]{0,}");
 	}
 
 }
